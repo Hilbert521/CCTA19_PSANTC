@@ -38,8 +38,8 @@ class CarDrawer(DrawSystem, NetworkSystem):
 
 
 class Round_Testing(CoupleCBF, Round_Uni, CarDrawer):
-    def __init__(self, x, yin, yout, h, gamma, ch=None):
-        CoupleCBF.__init__(self, x, h=h, gamma=gamma, ch=ch, a=lambda x: x)
+    def __init__(self, x, yin, yout, h, gamma, ach, ch=None):
+        CoupleCBF.__init__(self, x, h=h, gamma=gamma, ch=ch, a=lambda x: x, ach=ach)
         Round_Uni.__init__(self, x, yin, yout)
         CarDrawer.__init__(self, x)
 
@@ -164,7 +164,7 @@ if __name__ == '__main__':
     st2 = np.array([-.7, .13, 0., -2*np.pi/3])
     st3 = np.array([-.3, .65, 0., -5*np.pi/6])
 
-    sys1 = InRound(st2, yout2, gamma) #Round_Testing(st1, yin, yout, h, gamma, ch1)
+    sys1 = Round_Testing(st1, yin, yout, h, gamma, ch1)
     sys2 = InRound(st2, yout2, gamma)
     sys3 = InRound(st3, yout2, gamma)
     sys1.sys_list.append(sys2)

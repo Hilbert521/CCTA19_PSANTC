@@ -59,7 +59,7 @@ class Round_Uni(DoubleUnicycle):
         self.drawings[0].set_transform(axes.transData)
 
     def draw_update(self, axes):
-        tr = transforms.Affine2D().scale(.0002).rotate(self.x[3] + np.pi/2).translate(self.x[0], self.x[1])
+        tr = transforms.Affine2D().scale(.00018).rotate(self.x[3] + np.pi/2).translate(self.x[0], self.x[1])
         self.drawings[0].set_transform(tr + axes.transData)
 
 if __name__ == '__main__':
@@ -67,7 +67,7 @@ if __name__ == '__main__':
     yout = np.array([0, 1])
     sys = Round_Uni(np.array([-1.2, -.03, 0., 0.]), yin, yout)
     sys_list = [sys]
-    animator = Animate(sys_list, xlim=[-1.5, 1.5], ylim=[-1, 1])
+    animator = Animate(sys_list, xlim=[-1.5, 1.5], ylim=[-1, 1], inter=True)
     Roundabout = plt.imread('Roundabout.PNG')
     scale = 1
     animator.axes.imshow(Roundabout, extent=[scale*-1.5, scale*1.5, scale*-1, scale*1], zorder=0)
